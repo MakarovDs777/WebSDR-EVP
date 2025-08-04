@@ -28,4 +28,4 @@ setInterval(function switchFrequency() {
     console.warn('No form found containing the frequency input.  Cannot submit.');
   }
 
-}, 1000);
+}, 100);
