@@ -1,24 +1,23 @@
-setInterval(function() {
-    const frequencyInput = document.querySelector('input[name="frequency"]');
-    if (!frequencyInput) {
-        console.error('Frequency input element not found.');
-        return;
-    }
+setInterval(function switchFrequency() {
+  const frequencyInput = document.querySelector('input[name="frequency"]');
+  if (!frequencyInput) {
+    console.error('Frequency input element not found.');
+    return;
+  }
 
-    const min = 2000;
-    const max = 15000;
-    const frequency = Math.floor(Math.random() * (max - min + 1)) + min;
+  const min = 2000;
+  const max = 15000;
+  const frequency = Math.floor(Math.random() * (max - min + 1)) + min;
+  frequencyInput.value = frequency;
 
-    frequencyInput.value = frequency;
-    frequencyInput.dispatchEvent(new Event('input', { bubbles: true }));
+  frequencyInput.dispatchEvent(new Event('input', { bubbles: true }));
+  frequencyInput.dispatchEvent(new Event('change', { bubbles: true }));
 
-    // Можно оставить или убрать, в зависимости от необходимости
-    frequencyInput.dispatchEvent(new KeyboardEvent('keydown', {
-        bubbles: true,
-        cancelable: true,
-        key: 'Enter',
-        code: 'Enter',
-        keyCode: 13,
-        which: 13
-    }));
+  const form = frequencyInput.closest('form');
+  if (form) {
+    form.requestSubmit(); 
+  } else {
+    console.warn('No form found containing the frequency input.  Cannot submit.');
+  }
+
 }, 100);
