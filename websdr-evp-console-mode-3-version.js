@@ -6,8 +6,7 @@ setInterval(function switchFrequency() {
   }
 
   // **Ваш набор радиочастот**
-  const frequencies = [1500, 2000, 2300, 2750, 3100, 3500, 3850, 4200, 4550, 4900]; // Добавьте ваши значения
-
+  const frequencies = [4651, 6911, 4621.65, 810, 4621.65, 14505, 1728, 15520, 15390, 17715, 107.50, 100.0, 5367]; // Добавьте ваши значения
   // Случайный выбор радиочастоты из массива
   const randomIndex = Math.floor(Math.random() * frequencies.length);
   const frequency = frequencies[randomIndex];
